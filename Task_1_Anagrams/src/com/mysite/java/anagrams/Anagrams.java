@@ -3,7 +3,7 @@ package com.mysite.java.anagrams;
 
 public class Anagrams {
 	public static void main(String[] args) {
-		String phrase = "7ew!f8e efg!h";
+		String phrase = "7drt4 efg!h";
 		
 		System.out.println(doAnagram(phrase));
 	}
@@ -11,37 +11,43 @@ public class Anagrams {
 	
 	private static String doAnagram(String phrase) {
 		String[] words = phrase.split(" ");
-		String anagram = "";
+		StringBuilder anagram = new StringBuilder();
 		
 		for (String word : words) {
-			anagram += (doReverse(word) + " ");
+			anagram.append(doReverse(word).append(" "));
 		}
-		return anagram;
+		return anagram.toString();
 	}
 	
-	private static String doReverse(String word) {
+	private static StringBuilder doReverse(String word) {
 		StringBuilder result = new StringBuilder(word);
 		int headIndex = 0;
 		int tailIndex = result.length() - 1;
-
+		
 		while (headIndex < tailIndex) {
-			if (Character.isLetter(result.charAt(headIndex)) && Character.isLetter(result.charAt(tailIndex))) {
+			char headChar = result.charAt(headIndex);
+			char tailChar = result.charAt(tailIndex);
+			
+			if (Character.isLetter(headChar) && Character.isLetter(tailChar)) {
 				char temp = result.charAt(headIndex);
 				result.setCharAt(headIndex, result.charAt(tailIndex));
 				result.setCharAt(tailIndex, temp);
-
 				headIndex++;
+				tailIndex--;	
+			} 
+			else if (!Character.isLetter(headChar) && Character.isLetter(tailChar)) {
+				headIndex++;
+			} 
+			else if (Character.isLetter(headChar) && !Character.isLetter(tailChar)) {
 				tailIndex--;
-				
-			} else if (!Character.isLetter(result.charAt(headIndex)) && Character.isLetter(result.charAt(tailIndex))) {
+			}
+			else {
 				headIndex++;
-			} else if (Character.isLetter(result.charAt(headIndex)) && !Character.isLetter(result.charAt(tailIndex))) {
 				tailIndex--;
 			}
 		}
-		return result.toString();
+		return result;
 	}
-
 }
 
 
