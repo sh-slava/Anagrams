@@ -3,7 +3,7 @@ package com.mysite.java.anagrams;
 
 public class Anagrams {
 	public static void main(String[] args) {
-		String phrase = "7drt4 efg!h";
+		String phrase = "a1bcd efg!h";
 		
 		System.out.println(doAnagram(phrase));
 	}
@@ -20,18 +20,16 @@ public class Anagrams {
 	}
 	
 	private static StringBuilder doReverse(String word) {
-		StringBuilder result = new StringBuilder(word);
+		StringBuilder reversedWord = new StringBuilder(word);
 		int headIndex = 0;
-		int tailIndex = result.length() - 1;
+		int tailIndex = reversedWord.length() - 1;
 		
 		while (headIndex < tailIndex) {
-			char headChar = result.charAt(headIndex);
-			char tailChar = result.charAt(tailIndex);
+			char headChar = reversedWord.charAt(headIndex);
+			char tailChar = reversedWord.charAt(tailIndex);
 			
 			if (Character.isLetter(headChar) && Character.isLetter(tailChar)) {
-				char temp = result.charAt(headIndex);
-				result.setCharAt(headIndex, result.charAt(tailIndex));
-				result.setCharAt(tailIndex, temp);
+				exghangeLetters(reversedWord, headIndex, tailIndex);
 				headIndex++;
 				tailIndex--;	
 			} 
@@ -46,7 +44,13 @@ public class Anagrams {
 				tailIndex--;
 			}
 		}
-		return result;
+		return reversedWord;
+	}
+
+	private static void exghangeLetters(StringBuilder result, int headIndex, int tailIndex) {
+		char temp = result.charAt(headIndex);
+		result.setCharAt(headIndex, result.charAt(tailIndex));
+		result.setCharAt(tailIndex, temp);
 	}
 }
 
