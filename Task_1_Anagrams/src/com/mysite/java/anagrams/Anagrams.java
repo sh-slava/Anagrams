@@ -29,7 +29,7 @@ public class Anagrams {
 			char tailChar = reversedWord.charAt(tailIndex);
 			
 			if (Character.isLetter(headChar) && Character.isLetter(tailChar)) {
-				exghangeLetters(reversedWord, headIndex, tailIndex);
+				exchangeLetters(reversedWord, headIndex, tailIndex);
 				headIndex++;
 				tailIndex--;	
 			} 
@@ -47,10 +47,10 @@ public class Anagrams {
 		return reversedWord;
 	}
 
-	private static void exghangeLetters(StringBuilder result, int headIndex, int tailIndex) {
-		char temp = result.charAt(headIndex);
-		result.setCharAt(headIndex, result.charAt(tailIndex));
-		result.setCharAt(tailIndex, temp);
+	private static void exchangeLetters(StringBuilder word, int headIndex, int tailIndex) {
+		char temp = word.charAt(headIndex);
+		word.setCharAt(headIndex, word.charAt(tailIndex));
+		word.setCharAt(tailIndex, temp);
 	}
 }
 
