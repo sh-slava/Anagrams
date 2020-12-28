@@ -21,13 +21,13 @@ public class Anagrams {
 	}
 	
 	private static StringBuilder doReverse(String word) {
-		StringBuilder reversedWord = new StringBuilder(word);
+		StringBuilder result = new StringBuilder(word);
 		int headIndex = 0;
-		int tailIndex = reversedWord.length() - 1;
+		int tailIndex = result.length() - 1;
 		
 		while (headIndex < tailIndex) {
-			char headChar = reversedWord.charAt(headIndex);
-			char tailChar = reversedWord.charAt(tailIndex);
+			char headChar = result.charAt(headIndex);
+			char tailChar = result.charAt(tailIndex);
 			
 			if (!isLetter(headChar)) {
 				headIndex++;
@@ -36,7 +36,7 @@ public class Anagrams {
 				tailIndex--;
 			}
 			if (isLetter(headChar) && isLetter(tailChar)) {
-				exchangeLetters(reversedWord, headIndex, tailIndex);
+				exchangeLetters(result, headIndex, tailIndex);
 				headIndex++;
 				tailIndex--;
 			}
@@ -57,7 +57,7 @@ public class Anagrams {
 //				tailIndex--;
 //			}
 		}
-		return reversedWord;
+		return result;
 	}
 
 	private static void exchangeLetters(StringBuilder word, int headIndex, int tailIndex) {
