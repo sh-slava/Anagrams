@@ -1,5 +1,6 @@
 package com.mysite.java.anagrams;
 
+import static java.lang.Character.isLetter;
 
 public class Anagrams {
 	public static void main(String[] args) {
@@ -28,21 +29,33 @@ public class Anagrams {
 			char headChar = reversedWord.charAt(headIndex);
 			char tailChar = reversedWord.charAt(tailIndex);
 			
-			if (Character.isLetter(headChar) && Character.isLetter(tailChar)) {
+			if (!isLetter(headChar)) {
+				headIndex++;
+			}
+			if (!isLetter(tailChar)) {
+				tailIndex--;
+			}
+			if (isLetter(headChar) && isLetter(tailChar)) {
 				exchangeLetters(reversedWord, headIndex, tailIndex);
 				headIndex++;
-				tailIndex--;	
-			} 
-			else if (!Character.isLetter(headChar) && Character.isLetter(tailChar)) {
-				headIndex++;
-			} 
-			else if (Character.isLetter(headChar) && !Character.isLetter(tailChar)) {
 				tailIndex--;
 			}
-			else {
-				headIndex++;
-				tailIndex--;
-			}
+
+//			if (isLetter(headChar) && isLetter(tailChar)) {
+//				exchangeLetters(reversedWord, headIndex, tailIndex);
+//				headIndex++;
+//				tailIndex--;	
+//			} 
+//			else if (!isLetter(headChar) && isLetter(tailChar)) {
+//				headIndex++;
+//			} 
+//			else if (isLetter(headChar) && !isLetter(tailChar)) {
+//				tailIndex--;
+//			}
+//			else {
+//				headIndex++;
+//				tailIndex--;
+//			}
 		}
 		return reversedWord;
 	}
