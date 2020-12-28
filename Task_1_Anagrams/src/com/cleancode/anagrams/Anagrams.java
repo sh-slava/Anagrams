@@ -4,7 +4,7 @@ import static java.lang.Character.isLetter;
 
 public class Anagrams {
 	
-	public String doAnagram(String phrase) {
+	public String buildAnagram(String phrase) {
 		String[] words = phrase.split(" ");
 		StringBuilder anagram = new StringBuilder();
 		

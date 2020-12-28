@@ -6,7 +6,7 @@ public class Main {
 		Anagrams anagram = new Anagrams();
 		String phrase = "a1bcd efg!h";
 
-		System.out.println(anagram.doAnagram(phrase));
+		System.out.println(anagram.buildAnagram(phrase));
 	}
 
 }
