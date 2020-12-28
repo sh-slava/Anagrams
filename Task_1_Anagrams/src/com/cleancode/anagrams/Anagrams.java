@@ -14,7 +14,7 @@ public class Anagrams {
 		return anagram.toString();
 	}
 	
-	private StringBuilder reverse(String word) {
+	private String reverse(String word) {
 		StringBuilder result = new StringBuilder(word);
 		int headIndex = 0;
 		int tailIndex = result.length() - 1;
@@ -35,7 +35,7 @@ public class Anagrams {
 				tailIndex--;
 			}
 		}
-		return result;
+		return result.toString();
 	}
 
 	private void exchangeLetters(StringBuilder word, int headIndex, int tailIndex) {
