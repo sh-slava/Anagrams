@@ -1,4 +1,4 @@
-package com.mysite.java.anagrams;
+package com.cleancode.anagrams;
 
 public class Main {
 
