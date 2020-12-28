@@ -9,12 +9,12 @@ public class Anagrams {
 		StringBuilder anagram = new StringBuilder();
 		
 		for (String word : words) {
-			anagram.append(doReverse(word).append(" "));
+			anagram.append(reverse(word).append(" "));
 		}
 		return anagram.toString();
 	}
 	
-	private StringBuilder doReverse(String word) {
+	private StringBuilder reverse(String word) {
 		StringBuilder result = new StringBuilder(word);
 		int headIndex = 0;
 		int tailIndex = result.length() - 1;
