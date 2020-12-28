@@ -3,7 +3,7 @@ package com.cleancode.anagrams;
 import static java.lang.Character.isLetter;
 
 public class Anagrams {
-	
+
 	public String buildAnagram(String phrase) {
 		String[] words = phrase.split(" ");
 		StringBuilder anagram = new StringBuilder();
