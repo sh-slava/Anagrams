@@ -2,14 +2,16 @@ package com.cleancode.anagrams;
 
 import static java.lang.Character.isLetter;
 
+import java.util.StringJoiner;
+
 public class Anagrams {
 
 	public String buildAnagram(String phrase) {
 		String[] words = phrase.split(" ");
-		StringBuilder anagram = new StringBuilder();
+		StringJoiner anagram = new StringJoiner(" ");
 		
 		for (String word : words) {
-			anagram.append(reverse(word).append(" "));
+			anagram.add(reverse(word));
 		}
 		return anagram.toString();
 	}
