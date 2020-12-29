@@ -1,7 +1,7 @@
 package com.cleancode.anagrams;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -59,8 +59,8 @@ class AnagramsTest {
 	}
 
 	@Test
-	public void buildAnagram_ShouldThrow_when_bullInput() {
-		assertThrows(NullPointerException.class, () -> anagram.buildAnagram(null));
+	public void buildAnagram_ShouldReturnNull_whenNull() {
+		assertNull(anagram.buildAnagram(null));
 	}
-
 }
+
