@@ -3,59 +3,27 @@ package com.cleancode.anagrams;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class AnagramsTest {
 
 	Anagrams anagram = new Anagrams();
 
-	@Test
-	public void buildAnagram_shouldReverseSeparatelly_whenSeveralWords() {
-		String actual = "a1bcd efg!h";
-		String expected = "d1cba hgf!e";
-		assertEquals(expected, anagram.buildAnagram(actual));
+	@ParameterizedTest(name = "{index}: argument injected ({0})")
+	@MethodSource("argumentsProvider")
+	public void buildAnagram_shouldReverseWords_whenStreamOfArguments(String input, String expected) {
+		assertEquals(expected, anagram.buildAnagram(input));
 	}
 
-	@Test
-	public void buildAnagram_shouldReturnEmptyString_whenEmptyString() {
-		String actual = "";
-		String expected = "";
-		assertEquals(expected, anagram.buildAnagram(actual));
-	}
-
-	@Test
-	public void buildAnagram_shouldReturnEmptyString_whenSpace() {
-		String actual = " ";
-		String expected = "";
-		assertEquals(expected, anagram.buildAnagram(actual));
-	}
-
-	@Test
-	public void buildAnagram_shouldReverse_whenOnlyCharacters() {
-		String actual = "abcd";
-		String expected = "dcba";
-		assertEquals(expected, anagram.buildAnagram(actual));
-	}
-
-	@Test
-	public void buildAnagram_shoulNotReverse_whenOnlyNonCharacters() {
-		String actual = "&%$!5-*@";
-		String expected = "&%$!5-*@";
-		assertEquals(expected, anagram.buildAnagram(actual));
-	}
-
-	@Test
-	public void buildAnagram_shouldNotDoAnithing_whenSingleLetter_() {
-		String actual = "a";
-		String expected = "a";
-		assertEquals(expected, anagram.buildAnagram(actual));
-	}
-
-	@Test
-	public void buildAnagram_shouldNotDoAnithing_whenSingleNonLetter() {
-		String actual = "!";
-		String expected = "!";
-		assertEquals(expected, anagram.buildAnagram(actual));
+	public static Stream<Arguments> argumentsProvider() {
+		return Stream.of(Arguments.arguments("a1bcd efg!h", "d1cba hgf!e"), Arguments.arguments("abcd", "dcba"),
+				Arguments.arguments("&%$!5-*@", "&%$!5-*@"), Arguments.arguments("a", "a"),
+				Arguments.arguments("!", "!"), Arguments.arguments("", ""), Arguments.arguments(" ", ""));
 	}
 
 	@Test
