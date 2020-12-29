@@ -3,17 +3,11 @@ package com.cleancode.anagrams;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class AnagramsTest {
 
-	Anagrams anagram;
-
-	@BeforeEach
-	void init() {
-		anagram = new Anagrams();
-	}
+	Anagrams anagram = new Anagrams();
 
 	@Test
 	public void buildAnagram_shouldReverseSeparatelly_whenSeveralWords() {
