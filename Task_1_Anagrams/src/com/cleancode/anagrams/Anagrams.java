@@ -7,6 +7,9 @@ import java.util.StringJoiner;
 public class Anagrams {
 
 	public String buildAnagram(String phrase) {
+		if (phrase == null) {
+			return null;
+		}
 		String[] words = phrase.split(" ");
 		StringJoiner anagram = new StringJoiner(" ");
 		
