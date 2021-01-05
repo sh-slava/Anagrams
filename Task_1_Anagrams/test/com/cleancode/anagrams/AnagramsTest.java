@@ -7,8 +7,7 @@ import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.*;
 
 class AnagramsTest {
 
@@ -16,7 +15,7 @@ class AnagramsTest {
 
 	@ParameterizedTest(name = "{index}: argument injected ({0})")
 	@MethodSource("argumentsProvider")
-	public void buildAnagram_shouldReverseWords_whenStreamOfArguments(String input, String expected) {
+	public void buildAnagram_shouldReverseWords(String input, String expected) {
 		assertEquals(expected, anagram.buildAnagram(input));
 	}
 
