@@ -1,7 +1,6 @@
 package com.cleancode.anagrams;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.stream.Stream;
 
@@ -15,7 +14,7 @@ class AnagramsTest {
 
 	@ParameterizedTest(name = "{index}: argument injected ({0})")
 	@MethodSource("argumentsProvider")
-	public void buildAnagram_shouldReverseWords(String input, String expected) {
+	void buildAnagram_shouldReverseWords(String input, String expected) {
 		assertEquals(expected, anagram.buildAnagram(input));
 	}
 
@@ -38,7 +37,7 @@ class AnagramsTest {
 	}
 
 	@Test
-	public void buildAnagram_ShouldReturnNull_whenNull() {
+	void buildAnagram_ShouldReturnNull_whenNull() {
 		assertNull(anagram.buildAnagram(null));
 	}
 }
